@@ -9,7 +9,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 case "$1" in
-  withdraw|broadcast|build-tree|resume-status)
+  withdraw|build-tree|resume-status)
     exec node cli.js "$@"
     ;;
   send)

@@ -1,0 +1,11 @@
+node_modules/
+cache/
+phase2-bn254/phase2/target/
+phase2-bn254/bellman/target/
+phase2-bn254/pairing/target/
+.ffi/
+.git/
+.DS_Store
+*.md
+
+recovery-output/
