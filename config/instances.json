@@ -1,0 +1,56 @@
+{
+  "43114": {
+    "verifier": "0xFC0829E792b0D10DF95B895d56FaD4712DA30B25",
+    "currencies": {
+      "avax": {
+        "10": {
+          "address": "0xe1376DeF383D1656f5a40B6ba31F8C035BFc26Aa",
+          "deploymentBlock": 2714643,
+          "levels": 20,
+          "type": "native",
+          "denominationWei": "10000000000000000000"
+        },
+        "100": {
+          "address": "0x7CE57f6a5a135eb1a8e9640Af1eff9665ade00D9",
+          "deploymentBlock": 2714736,
+          "levels": 20,
+          "type": "native",
+          "denominationWei": "100000000000000000000"
+        },
+        "500": {
+          "address": "0x6ceB170e3ec0fAfaE3Be5A02FEFb81F524FE85C5",
+          "deploymentBlock": 2714737,
+          "levels": 20,
+          "type": "native",
+          "denominationWei": "500000000000000000000"
+        }
+      },
+      "tsd": {
+        "100": {
+          "address": "0x0B50666bA2fE78c025ccEB014F9622eB769bee94",
+          "deploymentBlock": 6944024,
+          "levels": 20,
+          "type": "erc20",
+          "denominationWei": "100000000000000000000",
+          "tokenAddress": "0x4fbf0429599460D327BD5F55625E30E4fC066095"
+        },
+        "1000": {
+          "address": "0xeeE270f3F38D135Ea9Bda18fDDC205a253D02c50",
+          "deploymentBlock": 6944032,
+          "levels": 20,
+          "type": "erc20",
+          "denominationWei": "1000000000000000000000",
+          "tokenAddress": "0x4fbf0429599460D327BD5F55625E30E4fC066095"
+        },
+        "10000": {
+          "address": "0x762cbdC98e64F3ABf2741AfB3781e5cBDA4DD783",
+          "deploymentBlock": 6944044,
+          "levels": 20,
+          "type": "erc20",
+          "denominationWei": "10000000000000000000000",
+          "tokenAddress": "0x4fbf0429599460D327BD5F55625E30E4fC066095"
+        }
+      }
+    }
+  }
+}

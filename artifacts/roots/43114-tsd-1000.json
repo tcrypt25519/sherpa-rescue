@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-20T23:05:55.023Z",
+  "chainId": 43114,
+  "currency": "tsd",
+  "amount": "1000",
+  "instance": "0xeeE270f3F38D135Ea9Bda18fDDC205a253D02c50",
+  "verifier": "0xFC0829E792b0D10DF95B895d56FaD4712DA30B25",
+  "levels": 20,
+  "fromBlock": 6944032,
+  "toBlock": 80859592,
+  "totalLeaves": 0,
+  "root": "18926336163373752588529320804722226672465218465546337267825102089394393880276",
+  "rootHex": "0x29d7ed391256ccc3ea596c86e933b89ff339d25ea8ddced975ae2fe30b5296d4",
+  "leaves": [],
+  "indexByCommitment": {}
+}

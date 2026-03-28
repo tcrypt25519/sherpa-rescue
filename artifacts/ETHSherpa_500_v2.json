@@ -1,0 +1,669 @@
+{
+  "address": "0x6ceB170e3ec0fAfaE3Be5A02FEFb81F524FE85C5",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "_verifier",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_denomination",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_merkleTreeHeight",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "commitment",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "leafIndex",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "nullifierHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "relayer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawal",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "FIELD_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ROOT_HISTORY_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ZERO_VALUE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "commitments",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "currentRootIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "denomination",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_commitment",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "filledSubtrees",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getLastRoot",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_left",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_right",
+          "type": "bytes32"
+        }
+      ],
+      "name": "hashLeftRight",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_root",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isKnownRoot",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_nullifierHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isSpent",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "_nullifierHashes",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "isSpentArray",
+      "outputs": [
+        {
+          "internalType": "bool[]",
+          "name": "spent",
+          "type": "bool[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "levels",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "nextIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "nullifierHashes",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "roots",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "verifier",
+      "outputs": [
+        {
+          "internalType": "contract IVerifier",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_proof",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_root",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_nullifierHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_relayer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_refund",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "zeros",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x6ffc8cdda17daa289f8bcd812bf8b9a4a1ec3164a450db2b86535d933d8c0a1b",
+  "receipt": {
+    "to": null,
+    "from": "0x027588aFaC1eEdB7D3d329A9b60c530aA3FadBbF",
+    "contractAddress": "0x6ceB170e3ec0fAfaE3Be5A02FEFb81F524FE85C5",
+    "transactionIndex": 1,
+    "gasUsed": "3084598",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x45dbd33f089ca9481dab504fb024af126d28ee0783cee01b7d0fd49be60b17c4",
+    "transactionHash": "0x6ffc8cdda17daa289f8bcd812bf8b9a4a1ec3164a450db2b86535d933d8c0a1b",
+    "logs": [],
+    "blockNumber": 2714737,
+    "cumulativeGasUsed": "3131052",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xFC0829E792b0D10DF95B895d56FaD4712DA30B25",
+    "500000000000000000000",
+    "20"
+  ],
+  "solcInputHash": "8ba53f8bfe13aaa9c5ca0d3469daffe7",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IVerifier\",\"name\":\"_verifier\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_denomination\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"_merkleTreeHeight\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"commitment\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"leafIndex\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"nullifierHash\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"relayer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fee\",\"type\":\"uint256\"}],\"name\":\"Withdrawal\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"FIELD_SIZE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ROOT_HISTORY_SIZE\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ZERO_VALUE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"commitments\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"currentRootIndex\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"denomination\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_commitment\",\"type\":\"bytes32\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"filledSubtrees\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getLastRoot\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_left\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_right\",\"type\":\"bytes32\"}],\"name\":\"hashLeftRight\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_root\",\"type\":\"bytes32\"}],\"name\":\"isKnownRoot\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_nullifierHash\",\"type\":\"bytes32\"}],\"name\":\"isSpent\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"_nullifierHashes\",\"type\":\"bytes32[]\"}],\"name\":\"isSpentArray\",\"outputs\":[{\"internalType\":\"bool[]\",\"name\":\"spent\",\"type\":\"bool[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"levels\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nextIndex\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"nullifierHashes\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"roots\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"verifier\",\"outputs\":[{\"internalType\":\"contract IVerifier\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"_root\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"_nullifierHash\",\"type\":\"bytes32\"},{\"internalType\":\"address payable\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"_relayer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_refund\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"zeros\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"deposit(bytes32)\":{\"details\":\"Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.\",\"params\":{\"_commitment\":\"the note commitment, which is PedersenHash(nullifier + secret)\"}},\"getLastRoot()\":{\"details\":\"Returns the last root\"},\"hashLeftRight(bytes32,bytes32)\":{\"details\":\"Hash 2 tree leaves, returns MiMC(_left, _right)\"},\"isKnownRoot(bytes32)\":{\"details\":\"Whether the root is present in the root history\"},\"isSpent(bytes32)\":{\"details\":\"whether a note is already spent \"},\"isSpentArray(bytes32[])\":{\"details\":\"whether an array of notes is already spent \"},\"withdraw(bytes,bytes32,bytes32,address,address,uint256,uint256)\":{\"details\":\"Withdraw a deposit from the contract. `proof` is a zkSNARK proof data, and input is an array of circuit public inputs `input` array consists of: - merkle root of all deposits in the contract - hash of unique deposit nullifier to prevent double spends - the recipient of funds - optional fee that goes to the transaction sender (usually a relay)\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"contracts/ETHSherpa.sol\":\"ETHSherpa\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":99999},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"content\":\"pragma solidity ^0.5.0;\\n\\n/**\\n * @dev Contract module that helps prevent reentrant calls to a function.\\n *\\n * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier\\n * available, which can be applied to functions to make sure there are no nested\\n * (reentrant) calls to them.\\n *\\n * Note that because there is a single `nonReentrant` guard, functions marked as\\n * `nonReentrant` may not call one another. This can be worked around by making\\n * those functions `private`, and then adding `external` `nonReentrant` entry\\n * points to them.\\n *\\n * TIP: If you would like to learn more about reentrancy and alternative ways\\n * to protect against it, check out our blog post\\n * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].\\n *\\n * _Since v2.5.0:_ this module is now much more gas efficient, given net gas\\n * metering changes introduced in the Istanbul hardfork.\\n */\\ncontract ReentrancyGuard {\\n    bool private _notEntered;\\n\\n    constructor () internal {\\n        // Storing an initial non-zero value makes deployment a bit more\\n        // expensive, but in exchange the refund on every call to nonReentrant\\n        // will be lower in amount. Since refunds are capped to a percetange of\\n        // the total transaction's gas, it is best to keep them low in cases\\n        // like this one, to increase the likelihood of the full refund coming\\n        // into effect.\\n        _notEntered = true;\\n    }\\n\\n    /**\\n     * @dev Prevents a contract from calling itself, directly or indirectly.\\n     * Calling a `nonReentrant` function from another `nonReentrant`\\n     * function is not supported. It is possible to prevent this from happening\\n     * by making the `nonReentrant` function external, and make it call a\\n     * `private` function that does the actual work.\\n     */\\n    modifier nonReentrant() {\\n        // On the first call to nonReentrant, _notEntered will be true\\n        require(_notEntered, \\\"ReentrancyGuard: reentrant call\\\");\\n\\n        // Any calls to nonReentrant after this point will fail\\n        _notEntered = false;\\n\\n        _;\\n\\n        // By storing the original value once again, a refund is triggered (see\\n        // https://eips.ethereum.org/EIPS/eip-2200)\\n        _notEntered = true;\\n    }\\n}\\n\",\"keccak256\":\"0xb63221b23818d622bfd83d18e0968307e4fcb7a35536bdceded76e1cf8349acd\"},\"contracts/ETHSherpa.sol\":{\"content\":\"// https://sherpa.cash\\n/*\\n* d888888P                                           dP              a88888b.                   dP\\n*    88                                              88             d8'   `88                   88\\n*    88    .d8888b. 88d888b. 88d888b. .d8888b. .d888b88 .d8888b.    88        .d8888b. .d8888b. 88d888b.\\n*    88    88'  `88 88'  `88 88'  `88 88'  `88 88'  `88 88'  `88    88        88'  `88 Y8ooooo. 88'  `88\\n*    88    88.  .88 88       88    88 88.  .88 88.  .88 88.  .88 dP Y8.   .88 88.  .88       88 88    88\\n*    dP    `88888P' dP       dP    dP `88888P8 `88888P8 `88888P' 88  Y88888P' `88888P8 `88888P' dP    dP\\n* ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\\n*/\\n\\npragma solidity 0.5.17;\\n\\nimport \\\"./Sherpa.sol\\\";\\n\\ncontract ETHSherpa is Sherpa {\\n  constructor(\\n    IVerifier _verifier,\\n    uint256 _denomination,\\n    uint32 _merkleTreeHeight\\n  ) Sherpa(_verifier, _denomination, _merkleTreeHeight) public {\\n  }\\n\\n  function _processDeposit() internal {\\n    require(msg.value == denomination, \\\"Please send `mixDenomination` ETH along with transaction\\\");\\n  }\\n\\n  function _processWithdraw(address payable _recipient, address payable _relayer, uint256 _fee, uint256 _refund) internal {\\n    // sanity checks\\n    require(msg.value == 0, \\\"Message value is supposed to be zero for ETH instance\\\");\\n    require(_refund == 0, \\\"Refund value is supposed to be zero for ETH instance\\\");\\n\\n    (bool success, ) = _recipient.call.value(denomination - _fee)(\\\"\\\");\\n    require(success, \\\"payment to _recipient did not go thru\\\");\\n    if (_fee > 0) {\\n      (success, ) = _relayer.call.value(_fee)(\\\"\\\");\\n      require(success, \\\"payment to _relayer did not go thru\\\");\\n    }\\n  }\\n}\\n\",\"keccak256\":\"0x2304233272328b3921764214a8a830d53cd1368a27e0fbd38e9dfd6642006049\"},\"contracts/MerkleTreeWithHistory.sol\":{\"content\":\"// https://sherpa.cash\\n/*\\n* d888888P                                           dP              a88888b.                   dP\\n*    88                                              88             d8'   `88                   88\\n*    88    .d8888b. 88d888b. 88d888b. .d8888b. .d888b88 .d8888b.    88        .d8888b. .d8888b. 88d888b.\\n*    88    88'  `88 88'  `88 88'  `88 88'  `88 88'  `88 88'  `88    88        88'  `88 Y8ooooo. 88'  `88\\n*    88    88.  .88 88       88    88 88.  .88 88.  .88 88.  .88 dP Y8.   .88 88.  .88       88 88    88\\n*    dP    `88888P' dP       dP    dP `88888P8 `88888P8 `88888P' 88  Y88888P' `88888P8 `88888P' dP    dP\\n* ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\\n*/\\n\\npragma solidity 0.5.17;\\n\\nlibrary Hasher {\\n  function MiMCSponge(uint256 in_xL, uint256 in_xR) public pure returns (uint256 xL, uint256 xR);\\n}\\n\\ncontract MerkleTreeWithHistory {\\n  uint256 public constant FIELD_SIZE = 21888242871839275222246405745257275088548364400416034343698204186575808495617;\\n  uint256 public constant ZERO_VALUE = 21663839004416932945382355908790599225266501822907911457504978515578255421292; // = keccak256(\\\"tornado\\\") % FIELD_SIZE\\n\\n  uint32 public levels;\\n\\n  // the following variables are made public for easier testing and debugging and\\n  // are not supposed to be accessed in regular code\\n  bytes32[] public filledSubtrees;\\n  bytes32[] public zeros;\\n  uint32 public currentRootIndex = 0;\\n  uint32 public nextIndex = 0;\\n  uint32 public constant ROOT_HISTORY_SIZE = 100;\\n  bytes32[ROOT_HISTORY_SIZE] public roots;\\n\\n  constructor(uint32 _treeLevels) public {\\n    require(_treeLevels > 0, \\\"_treeLevels should be greater than zero\\\");\\n    require(_treeLevels < 32, \\\"_treeLevels should be less than 32\\\");\\n    levels = _treeLevels;\\n\\n    bytes32 currentZero = bytes32(ZERO_VALUE);\\n    zeros.push(currentZero);\\n    filledSubtrees.push(currentZero);\\n\\n    for (uint32 i = 1; i < levels; i++) {\\n      currentZero = hashLeftRight(currentZero, currentZero);\\n      zeros.push(currentZero);\\n      filledSubtrees.push(currentZero);\\n    }\\n\\n    roots[0] = hashLeftRight(currentZero, currentZero);\\n  }\\n\\n  /**\\n    @dev Hash 2 tree leaves, returns MiMC(_left, _right)\\n  */\\n  function hashLeftRight(bytes32 _left, bytes32 _right) public pure returns (bytes32) {\\n    require(uint256(_left) < FIELD_SIZE, \\\"_left should be inside the field\\\");\\n    require(uint256(_right) < FIELD_SIZE, \\\"_right should be inside the field\\\");\\n    uint256 R = uint256(_left);\\n    uint256 C = 0;\\n    (R, C) = Hasher.MiMCSponge(R, C);\\n    R = addmod(R, uint256(_right), FIELD_SIZE);\\n    (R, C) = Hasher.MiMCSponge(R, C);\\n    return bytes32(R);\\n  }\\n\\n  function _insert(bytes32 _leaf) internal returns(uint32 index) {\\n    uint32 currentIndex = nextIndex;\\n    require(currentIndex != uint32(2)**levels, \\\"Merkle tree is full. No more leafs can be added\\\");\\n    nextIndex += 1;\\n    bytes32 currentLevelHash = _leaf;\\n    bytes32 left;\\n    bytes32 right;\\n\\n    for (uint32 i = 0; i < levels; i++) {\\n      if (currentIndex % 2 == 0) {\\n        left = currentLevelHash;\\n        right = zeros[i];\\n\\n        filledSubtrees[i] = currentLevelHash;\\n      } else {\\n        left = filledSubtrees[i];\\n        right = currentLevelHash;\\n      }\\n\\n      currentLevelHash = hashLeftRight(left, right);\\n\\n      currentIndex /= 2;\\n    }\\n\\n    currentRootIndex = (currentRootIndex + 1) % ROOT_HISTORY_SIZE;\\n    roots[currentRootIndex] = currentLevelHash;\\n    return nextIndex - 1;\\n  }\\n\\n  /**\\n    @dev Whether the root is present in the root history\\n  */\\n  function isKnownRoot(bytes32 _root) public view returns(bool) {\\n    if (_root == 0) {\\n      return false;\\n    }\\n    uint32 i = currentRootIndex;\\n    do {\\n      if (_root == roots[i]) {\\n        return true;\\n      }\\n      if (i == 0) {\\n        i = ROOT_HISTORY_SIZE;\\n      }\\n      i--;\\n    } while (i != currentRootIndex);\\n    return false;\\n  }\\n\\n  /**\\n    @dev Returns the last root\\n  */\\n  function getLastRoot() public view returns(bytes32) {\\n    return roots[currentRootIndex];\\n  }\\n}\\n\",\"keccak256\":\"0x0f68a20c7645308a0c10419db0351ac2412fa7c006cfdb0a83b6522715b82cfd\"},\"contracts/Sherpa.sol\":{\"content\":\"// https://sherpa.cash\\n/*\\n* d888888P                                           dP              a88888b.                   dP\\n*    88                                              88             d8'   `88                   88\\n*    88    .d8888b. 88d888b. 88d888b. .d8888b. .d888b88 .d8888b.    88        .d8888b. .d8888b. 88d888b.\\n*    88    88'  `88 88'  `88 88'  `88 88'  `88 88'  `88 88'  `88    88        88'  `88 Y8ooooo. 88'  `88\\n*    88    88.  .88 88       88    88 88.  .88 88.  .88 88.  .88 dP Y8.   .88 88.  .88       88 88    88\\n*    dP    `88888P' dP       dP    dP `88888P8 `88888P8 `88888P' 88  Y88888P' `88888P8 `88888P' dP    dP\\n* ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\\n*/\\n\\npragma solidity 0.5.17;\\n\\nimport \\\"./MerkleTreeWithHistory.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\\\";\\n\\ncontract IVerifier {\\n  function verifyProof(bytes memory _proof, uint256[6] memory _input) public returns(bool);\\n}\\n\\ncontract Sherpa is MerkleTreeWithHistory, ReentrancyGuard {\\n  uint256 public denomination;\\n  mapping(bytes32 => bool) public nullifierHashes;\\n  // we store all commitments just to prevent accidental deposits with the same commitment\\n  mapping(bytes32 => bool) public commitments;\\n  IVerifier public verifier;\\n\\n  event Deposit(bytes32 indexed commitment, uint32 leafIndex, uint256 timestamp);\\n  event Withdrawal(address to, bytes32 nullifierHash, address indexed relayer, uint256 fee);\\n\\n  /**\\n    @dev The constructor\\n    @param _verifier the address of SNARK verifier for this contract\\n    @param _denomination transfer amount for each deposit\\n    @param _merkleTreeHeight the height of deposits' Merkle Tree\\n  */\\n  constructor(\\n    IVerifier _verifier,\\n    uint256 _denomination,\\n    uint32 _merkleTreeHeight\\n  ) MerkleTreeWithHistory(_merkleTreeHeight) public {\\n    require(_denomination > 0, \\\"denomination should be greater than 0\\\");\\n    verifier = _verifier;\\n    denomination = _denomination;\\n  }\\n\\n  /**\\n    @dev Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.\\n    @param _commitment the note commitment, which is PedersenHash(nullifier + secret)\\n  */\\n  function deposit(bytes32 _commitment) external payable nonReentrant {\\n    require(!commitments[_commitment], \\\"The commitment has been submitted\\\");\\n\\n    uint32 insertedIndex = _insert(_commitment);\\n    commitments[_commitment] = true;\\n    _processDeposit();\\n\\n    emit Deposit(_commitment, insertedIndex, block.timestamp);\\n  }\\n\\n  /** @dev this function is defined in a child contract */\\n  function _processDeposit() internal;\\n\\n  /**\\n    @dev Withdraw a deposit from the contract. `proof` is a zkSNARK proof data, and input is an array of circuit public inputs\\n    `input` array consists of:\\n      - merkle root of all deposits in the contract\\n      - hash of unique deposit nullifier to prevent double spends\\n      - the recipient of funds\\n      - optional fee that goes to the transaction sender (usually a relay)\\n  */\\n  function withdraw(bytes calldata _proof, bytes32 _root, bytes32 _nullifierHash, address payable _recipient, address payable _relayer, uint256 _fee, uint256 _refund) external payable nonReentrant {\\n    require(_fee <= denomination, \\\"Fee exceeds transfer value\\\");\\n    require(!nullifierHashes[_nullifierHash], \\\"The note has been already spent\\\");\\n    require(isKnownRoot(_root), \\\"Cannot find your merkle root\\\"); // Make sure to use a recent one\\n    require(verifier.verifyProof(_proof, [uint256(_root), uint256(_nullifierHash), uint256(_recipient), uint256(_relayer), _fee, _refund]), \\\"Invalid withdraw proof\\\");\\n\\n    nullifierHashes[_nullifierHash] = true;\\n    _processWithdraw(_recipient, _relayer, _fee, _refund);\\n    emit Withdrawal(_recipient, _nullifierHash, _relayer, _fee);\\n  }\\n\\n  /** @dev this function is defined in a child contract */\\n  function _processWithdraw(address payable _recipient, address payable _relayer, uint256 _fee, uint256 _refund) internal;\\n\\n  /** @dev whether a note is already spent */\\n  function isSpent(bytes32 _nullifierHash) public view returns(bool) {\\n    return nullifierHashes[_nullifierHash];\\n  }\\n\\n  /** @dev whether an array of notes is already spent */\\n  function isSpentArray(bytes32[] calldata _nullifierHashes) external view returns(bool[] memory spent) {\\n    spent = new bool[](_nullifierHashes.length);\\n    for(uint i = 0; i < _nullifierHashes.length; i++) {\\n      if (isSpent(_nullifierHashes[i])) {\\n        spent[i] = true;\\n      }\\n    }\\n  }\\n}\\n\",\"keccak256\":\"0xf619ab868cb454483656628671dcc311ada869db7f7973ddb86adb0ffc8af897\"}},\"version\":1}",
+  "bytecode": "0x6080604052600380546001600160401b03191690553480156200002157600080fd5b5060405162001bbe38038062001bbe833981810160405260608110156200004757600080fd5b50805160208201516040909201519091908282828063ffffffff8116620000a05760405162461bcd60e51b815260040180806020018281038252602781526020018062001b356027913960400191505060405180910390fd5b60208163ffffffff1610620000e75760405162461bcd60e51b815260040180806020018281038252602281526020018062001b7c6022913960400191505060405180910390fd5b6000805463ffffffff191663ffffffff83161781556002805460018181019092557f2fe54c60d3acabf3343a35b6eba15db4821b340f76e741e2249685ed4899af6c60008051602062001af4833981519152909101819055815480830183559282905260008051602062001b9e8339815191529092018290555b60005463ffffffff9081169082161015620001d5576200018b82806001600160e01b036200026d16565b60028054600181810190925560008051602062001af48339815191520182905580548082018255600082905260008051602062001b9e833981519152018290559092500162000161565b50620001eb81806001600160e01b036200026d16565b60046000015550506068805460ff19166001179055816200023e5760405162461bcd60e51b815260040180806020018281038252602581526020018062001acf6025913960400191505060405180910390fd5b50606c80546001600160a01b0319166001600160a01b039390931692909217909155606955506200045a915050565b600060008051602062001b5c8339815191528310620002d3576040805162461bcd60e51b815260206004820181905260248201527f5f6c6566742073686f756c6420626520696e7369646520746865206669656c64604482015290519081900360640190fd5b60008051602062001b5c8339815191528210620003225760405162461bcd60e51b815260040180806020018281038252602181526020018062001b146021913960400191505060405180910390fd5b6040805163f47d33b560e01b8152600481018590526000602482018190528251869391927311735d37F9f4833d6fC6C81634e24D5CE25AfE1D9263f47d33b592604480840193829003018186803b1580156200037d57600080fd5b505af415801562000392573d6000803e3d6000fd5b505050506040513d6040811015620003a957600080fd5b508051602090910151909250905060008051602062001b5c83398151915284830891507311735d37F9f4833d6fC6C81634e24D5CE25AfE1D63f47d33b583836040518363ffffffff1660e01b81526004018083815260200182815260200192505050604080518083038186803b1580156200042357600080fd5b505af415801562000438573d6000803e3d6000fd5b505050506040513d60408110156200044f57600080fd5b505195945050505050565b611665806200046a6000396000f3fe60806040526004361061015f5760003560e01c80639fa12d0b116100c0578063e5285dcc11610074578063ec73295911610059578063ec7329591461051f578063f178e47c14610534578063fc7e9c6f1461055e5761015f565b8063e5285dcc146104cb578063e8295588146104f55761015f565b8063ba70f757116100a5578063ba70f75714610477578063c2b40ae41461048c578063cd87a3b4146104b65761015f565b80639fa12d0b1461038d578063b214faa51461045a5761015f565b80634ecf518b11610117578063839df945116100fc578063839df945146103395780638bca6d161461036357806390eeb02b146103785761015f565b80634ecf518b146102e15780636d9833e31461030f5761015f565b80632b7ac3f3116101485780632b7ac3f31461024c57806338bf282e1461028a578063414a37ba146102cc5761015f565b806317cc915c1461016457806321a0adb6146101a2575b600080fd5b34801561017057600080fd5b5061018e6004803603602081101561018757600080fd5b5035610573565b604080519115158252519081900360200190f35b61024a600480360360e08110156101b857600080fd5b8101906020810181356401000000008111156101d357600080fd5b8201836020820111156101e557600080fd5b8035906020019184600183028401116401000000008311171561020757600080fd5b919350915080359060208101359073ffffffffffffffffffffffffffffffffffffffff604082013581169160608101359091169060808101359060a00135610588565b005b34801561025857600080fd5b506102616109eb565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561029657600080fd5b506102ba600480360360408110156102ad57600080fd5b5080359060200135610a07565b60408051918252519081900360200190f35b3480156102d857600080fd5b506102ba610c6b565b3480156102ed57600080fd5b506102f6610c8f565b6040805163ffffffff9092168252519081900360200190f35b34801561031b57600080fd5b5061018e6004803603602081101561033257600080fd5b5035610c9b565b34801561034557600080fd5b5061018e6004803603602081101561035c57600080fd5b5035610d2c565b34801561036f57600080fd5b506102ba610d41565b34801561038457600080fd5b506102f6610d47565b34801561039957600080fd5b5061040a600480360360208110156103b057600080fd5b8101906020810181356401000000008111156103cb57600080fd5b8201836020820111156103dd57600080fd5b803590602001918460208302840111640100000000831117156103ff57600080fd5b509092509050610d53565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561044657818101518382015260200161042e565b505050509050019250505060405180910390f35b61024a6004803603602081101561047057600080fd5b5035610ddb565b34801561048357600080fd5b506102ba610f96565b34801561049857600080fd5b506102ba600480360360208110156104af57600080fd5b5035610fb6565b3480156104c257600080fd5b506102f6610fca565b3480156104d757600080fd5b5061018e600480360360208110156104ee57600080fd5b5035610fcf565b34801561050157600080fd5b506102ba6004803603602081101561051857600080fd5b5035610fe4565b34801561052b57600080fd5b506102ba611002565b34801561054057600080fd5b506102ba6004803603602081101561055757600080fd5b5035611026565b34801561056a57600080fd5b506102f6611033565b606a6020526000908152604090205460ff1681565b60685460ff166105f957604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c00604482015290519081900360640190fd5b606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016905560695482111561069257604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4665652065786365656473207472616e736665722076616c7565000000000000604482015290519081900360640190fd5b6000858152606a602052604090205460ff161561071057604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f546865206e6f746520686173206265656e20616c7265616479207370656e7400604482015290519081900360640190fd5b61071986610c9b565b61078457604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601c60248201527f43616e6e6f742066696e6420796f7572206d65726b6c6520726f6f7400000000604482015290519081900360640190fd5b606c546040805160c080820183528982526020820189905273ffffffffffffffffffffffffffffffffffffffff8881168385015287811660608401526080830187905260a0830186905292517f695ef6f9000000000000000000000000000000000000000000000000000000008152929093169263695ef6f9928c928c9290916004810191829160240190849080838360005b8381101561082f578181015183820152602001610817565b505050509050018281038252858582818152602001925080828437600081840152601f19601f820116905080830192505050945050505050602060405180830381600087803b15801561088157600080fd5b505af1158015610895573d6000803e3d6000fd5b505050506040513d60208110156108ab57600080fd5b505161091857604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601660248201527f496e76616c69642077697468647261772070726f6f6600000000000000000000604482015290519081900360640190fd5b6000858152606a6020526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016600117905561095b84848484611047565b6040805173ffffffffffffffffffffffffffffffffffffffff8681168252602082018890528183018590529151918516917fe9e508bad6d4c3227e881ca19068f099da81b5164dd6d62b2eaf1e8bc6c349319181900360600190a25050606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00166001179055505050505050565b606c5473ffffffffffffffffffffffffffffffffffffffff1681565b60007f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f00000018310610a9757604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820181905260248201527f5f6c6566742073686f756c6420626520696e7369646520746865206669656c64604482015290519081900360640190fd5b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f00000018210610b0f576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061153e6021913960400191505060405180910390fd5b604080517ff47d33b5000000000000000000000000000000000000000000000000000000008152600481018590526000602482018190528251869391927311735d37F9f4833d6fC6C81634e24D5CE25AfE1D9263f47d33b592604480840193829003018186803b158015610b8257600080fd5b505af4158015610b96573d6000803e3d6000fd5b505050506040513d6040811015610bac57600080fd5b50805160209091015190925090507f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f000000184830891507311735d37F9f4833d6fC6C81634e24D5CE25AfE1D63f47d33b583836040518363ffffffff1660e01b81526004018083815260200182815260200192505050604080518083038186803b158015610c3657600080fd5b505af4158015610c4a573d6000803e3d6000fd5b505050506040513d6040811015610c6057600080fd5b505195945050505050565b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f000000181565b60005463ffffffff1681565b600081610caa57506000610d27565b60035463ffffffff165b60048163ffffffff1660648110610cc757fe5b0154831415610cda576001915050610d27565b63ffffffff8116610ce9575060645b6003547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9091019063ffffffff80831691161415610cb45760009150505b919050565b606b6020526000908152604090205460ff1681565b60695481565b60035463ffffffff1681565b604080518281526020808402820101909152606090828015610d7f578160200160208202803883390190505b50905060005b82811015610dd457610da8848483818110610d9c57fe5b90506020020135610fcf565b15610dcc576001828281518110610dbb57fe5b911515602092830291909101909101525b600101610d85565b5092915050565b60685460ff16610e4c57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c00604482015290519081900360640190fd5b606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001690556000818152606b602052604090205460ff1615610edc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001806115936021913960400191505060405180910390fd5b6000610ee782611276565b6000838152606b6020526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001660011790559050610f2861147a565b6040805163ffffffff83168152426020820152815184927fa945e51eec50ab98c161376f0db4cf2aeba3ec92755fe2fcd388bdbbb80ff196928290030190a25050606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00166001179055565b60035460009060049063ffffffff1660648110610faf57fe5b0154905090565b60048160648110610fc357fe5b0154905081565b606481565b6000908152606a602052604090205460ff1690565b60028181548110610ff157fe5b600091825260209091200154905081565b7f2fe54c60d3acabf3343a35b6eba15db4821b340f76e741e2249685ed4899af6c81565b60018181548110610ff157fe5b600354640100000000900463ffffffff1681565b341561109e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260358152602001806115fc6035913960400191505060405180910390fd5b80156110f5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603481526020018061155f6034913960400191505060405180910390fd5b60695460405160009173ffffffffffffffffffffffffffffffffffffffff87169190859003908381818185875af1925050503d8060008114611153576040519150601f19603f3d011682016040523d82523d6000602084013e611158565b606091505b50509050806111b2576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260258152602001806115b46025913960400191505060405180910390fd5b821561126f5760405173ffffffffffffffffffffffffffffffffffffffff8516908490600081818185875af1925050503d806000811461120e576040519150601f19603f3d011682016040523d82523d6000602084013e611213565b606091505b5050809150508061126f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001806115d96023913960400191505060405180910390fd5b5050505050565b60035460008054909163ffffffff640100000000909104811691811660020a168114156112ee576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602f8152602001806114d7602f913960400191505060405180910390fd5b6003805463ffffffff6401000000008083048216600101909116027fffffffffffffffffffffffffffffffffffffffffffffffff00000000ffffffff90911617905582600080805b60005463ffffffff90811690821610156113de576001851661139a5783925060028163ffffffff168154811061136857fe5b906000526020600020015491508360018263ffffffff168154811061138957fe5b6000918252602090912001556113be565b60018163ffffffff16815481106113ad57fe5b906000526020600020015492508391505b6113c88383610a07565b9350600263ffffffff8616049450600101611336565b5060035460649063ffffffff90811660010116600380547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000169290910663ffffffff90811692909217908190558491600491166064811061143b57fe5b01555050600354640100000000900463ffffffff167fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff01949350505050565b60695434146114d4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260388152602001806115066038913960400191505060405180910390fd5b56fe4d65726b6c6520747265652069732066756c6c2e204e6f206d6f7265206c656166732063616e206265206164646564506c656173652073656e6420606d697844656e6f6d696e6174696f6e602045544820616c6f6e672077697468207472616e73616374696f6e5f72696768742073686f756c6420626520696e7369646520746865206669656c64526566756e642076616c756520697320737570706f73656420746f206265207a65726f20666f722045544820696e7374616e636554686520636f6d6d69746d656e7420686173206265656e207375626d69747465647061796d656e7420746f205f726563697069656e7420646964206e6f7420676f20746872757061796d656e7420746f205f72656c6179657220646964206e6f7420676f20746872754d6573736167652076616c756520697320737570706f73656420746f206265207a65726f20666f722045544820696e7374616e6365a265627a7a72315820ca2616b9498dffd41c69894465f848b2af3723dc7fdb9b530c2cd783b51e555864736f6c6343000511003264656e6f6d696e6174696f6e2073686f756c642062652067726561746572207468616e2030405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace5f72696768742073686f756c6420626520696e7369646520746865206669656c645f747265654c6576656c732073686f756c642062652067726561746572207468616e207a65726f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f00000015f747265654c6576656c732073686f756c64206265206c657373207468616e203332b10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6",
+  "deployedBytecode": "0x60806040526004361061015f5760003560e01c80639fa12d0b116100c0578063e5285dcc11610074578063ec73295911610059578063ec7329591461051f578063f178e47c14610534578063fc7e9c6f1461055e5761015f565b8063e5285dcc146104cb578063e8295588146104f55761015f565b8063ba70f757116100a5578063ba70f75714610477578063c2b40ae41461048c578063cd87a3b4146104b65761015f565b80639fa12d0b1461038d578063b214faa51461045a5761015f565b80634ecf518b11610117578063839df945116100fc578063839df945146103395780638bca6d161461036357806390eeb02b146103785761015f565b80634ecf518b146102e15780636d9833e31461030f5761015f565b80632b7ac3f3116101485780632b7ac3f31461024c57806338bf282e1461028a578063414a37ba146102cc5761015f565b806317cc915c1461016457806321a0adb6146101a2575b600080fd5b34801561017057600080fd5b5061018e6004803603602081101561018757600080fd5b5035610573565b604080519115158252519081900360200190f35b61024a600480360360e08110156101b857600080fd5b8101906020810181356401000000008111156101d357600080fd5b8201836020820111156101e557600080fd5b8035906020019184600183028401116401000000008311171561020757600080fd5b919350915080359060208101359073ffffffffffffffffffffffffffffffffffffffff604082013581169160608101359091169060808101359060a00135610588565b005b34801561025857600080fd5b506102616109eb565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561029657600080fd5b506102ba600480360360408110156102ad57600080fd5b5080359060200135610a07565b60408051918252519081900360200190f35b3480156102d857600080fd5b506102ba610c6b565b3480156102ed57600080fd5b506102f6610c8f565b6040805163ffffffff9092168252519081900360200190f35b34801561031b57600080fd5b5061018e6004803603602081101561033257600080fd5b5035610c9b565b34801561034557600080fd5b5061018e6004803603602081101561035c57600080fd5b5035610d2c565b34801561036f57600080fd5b506102ba610d41565b34801561038457600080fd5b506102f6610d47565b34801561039957600080fd5b5061040a600480360360208110156103b057600080fd5b8101906020810181356401000000008111156103cb57600080fd5b8201836020820111156103dd57600080fd5b803590602001918460208302840111640100000000831117156103ff57600080fd5b509092509050610d53565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561044657818101518382015260200161042e565b505050509050019250505060405180910390f35b61024a6004803603602081101561047057600080fd5b5035610ddb565b34801561048357600080fd5b506102ba610f96565b34801561049857600080fd5b506102ba600480360360208110156104af57600080fd5b5035610fb6565b3480156104c257600080fd5b506102f6610fca565b3480156104d757600080fd5b5061018e600480360360208110156104ee57600080fd5b5035610fcf565b34801561050157600080fd5b506102ba6004803603602081101561051857600080fd5b5035610fe4565b34801561052b57600080fd5b506102ba611002565b34801561054057600080fd5b506102ba6004803603602081101561055757600080fd5b5035611026565b34801561056a57600080fd5b506102f6611033565b606a6020526000908152604090205460ff1681565b60685460ff166105f957604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c00604482015290519081900360640190fd5b606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016905560695482111561069257604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4665652065786365656473207472616e736665722076616c7565000000000000604482015290519081900360640190fd5b6000858152606a602052604090205460ff161561071057604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f546865206e6f746520686173206265656e20616c7265616479207370656e7400604482015290519081900360640190fd5b61071986610c9b565b61078457604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601c60248201527f43616e6e6f742066696e6420796f7572206d65726b6c6520726f6f7400000000604482015290519081900360640190fd5b606c546040805160c080820183528982526020820189905273ffffffffffffffffffffffffffffffffffffffff8881168385015287811660608401526080830187905260a0830186905292517f695ef6f9000000000000000000000000000000000000000000000000000000008152929093169263695ef6f9928c928c9290916004810191829160240190849080838360005b8381101561082f578181015183820152602001610817565b505050509050018281038252858582818152602001925080828437600081840152601f19601f820116905080830192505050945050505050602060405180830381600087803b15801561088157600080fd5b505af1158015610895573d6000803e3d6000fd5b505050506040513d60208110156108ab57600080fd5b505161091857604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601660248201527f496e76616c69642077697468647261772070726f6f6600000000000000000000604482015290519081900360640190fd5b6000858152606a6020526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016600117905561095b84848484611047565b6040805173ffffffffffffffffffffffffffffffffffffffff8681168252602082018890528183018590529151918516917fe9e508bad6d4c3227e881ca19068f099da81b5164dd6d62b2eaf1e8bc6c349319181900360600190a25050606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00166001179055505050505050565b606c5473ffffffffffffffffffffffffffffffffffffffff1681565b60007f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f00000018310610a9757604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820181905260248201527f5f6c6566742073686f756c6420626520696e7369646520746865206669656c64604482015290519081900360640190fd5b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f00000018210610b0f576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061153e6021913960400191505060405180910390fd5b604080517ff47d33b50000000000000000000000000000000000000000000000000000000081526004810185905260006024820181905282518693919273__$9780738a116369df5fe6eb1df74865bc0a$__9263f47d33b592604480840193829003018186803b158015610b8257600080fd5b505af4158015610b96573d6000803e3d6000fd5b505050506040513d6040811015610bac57600080fd5b50805160209091015190925090507f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001848308915073__$9780738a116369df5fe6eb1df74865bc0a$__63f47d33b583836040518363ffffffff1660e01b81526004018083815260200182815260200192505050604080518083038186803b158015610c3657600080fd5b505af4158015610c4a573d6000803e3d6000fd5b505050506040513d6040811015610c6057600080fd5b505195945050505050565b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f000000181565b60005463ffffffff1681565b600081610caa57506000610d27565b60035463ffffffff165b60048163ffffffff1660648110610cc757fe5b0154831415610cda576001915050610d27565b63ffffffff8116610ce9575060645b6003547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff9091019063ffffffff80831691161415610cb45760009150505b919050565b606b6020526000908152604090205460ff1681565b60695481565b60035463ffffffff1681565b604080518281526020808402820101909152606090828015610d7f578160200160208202803883390190505b50905060005b82811015610dd457610da8848483818110610d9c57fe5b90506020020135610fcf565b15610dcc576001828281518110610dbb57fe5b911515602092830291909101909101525b600101610d85565b5092915050565b60685460ff16610e4c57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c00604482015290519081900360640190fd5b606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001690556000818152606b602052604090205460ff1615610edc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260218152602001806115936021913960400191505060405180910390fd5b6000610ee782611276565b6000838152606b6020526040902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001660011790559050610f2861147a565b6040805163ffffffff83168152426020820152815184927fa945e51eec50ab98c161376f0db4cf2aeba3ec92755fe2fcd388bdbbb80ff196928290030190a25050606880547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00166001179055565b60035460009060049063ffffffff1660648110610faf57fe5b0154905090565b60048160648110610fc357fe5b0154905081565b606481565b6000908152606a602052604090205460ff1690565b60028181548110610ff157fe5b600091825260209091200154905081565b7f2fe54c60d3acabf3343a35b6eba15db4821b340f76e741e2249685ed4899af6c81565b60018181548110610ff157fe5b600354640100000000900463ffffffff1681565b341561109e576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260358152602001806115fc6035913960400191505060405180910390fd5b80156110f5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603481526020018061155f6034913960400191505060405180910390fd5b60695460405160009173ffffffffffffffffffffffffffffffffffffffff87169190859003908381818185875af1925050503d8060008114611153576040519150601f19603f3d011682016040523d82523d6000602084013e611158565b606091505b50509050806111b2576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260258152602001806115b46025913960400191505060405180910390fd5b821561126f5760405173ffffffffffffffffffffffffffffffffffffffff8516908490600081818185875af1925050503d806000811461120e576040519150601f19603f3d011682016040523d82523d6000602084013e611213565b606091505b5050809150508061126f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260238152602001806115d96023913960400191505060405180910390fd5b5050505050565b60035460008054909163ffffffff640100000000909104811691811660020a168114156112ee576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602f8152602001806114d7602f913960400191505060405180910390fd5b6003805463ffffffff6401000000008083048216600101909116027fffffffffffffffffffffffffffffffffffffffffffffffff00000000ffffffff90911617905582600080805b60005463ffffffff90811690821610156113de576001851661139a5783925060028163ffffffff168154811061136857fe5b906000526020600020015491508360018263ffffffff168154811061138957fe5b6000918252602090912001556113be565b60018163ffffffff16815481106113ad57fe5b906000526020600020015492508391505b6113c88383610a07565b9350600263ffffffff8616049450600101611336565b5060035460649063ffffffff90811660010116600380547fffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000169290910663ffffffff90811692909217908190558491600491166064811061143b57fe5b01555050600354640100000000900463ffffffff167fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff01949350505050565b60695434146114d4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260388152602001806115066038913960400191505060405180910390fd5b56fe4d65726b6c6520747265652069732066756c6c2e204e6f206d6f7265206c656166732063616e206265206164646564506c656173652073656e6420606d697844656e6f6d696e6174696f6e602045544820616c6f6e672077697468207472616e73616374696f6e5f72696768742073686f756c6420626520696e7369646520746865206669656c64526566756e642076616c756520697320737570706f73656420746f206265207a65726f20666f722045544820696e7374616e636554686520636f6d6d69746d656e7420686173206265656e207375626d69747465647061796d656e7420746f205f726563697069656e7420646964206e6f7420676f20746872757061796d656e7420746f205f72656c6179657220646964206e6f7420676f20746872754d6573736167652076616c756520697320737570706f73656420746f206265207a65726f20666f722045544820696e7374616e6365a265627a7a72315820ca2616b9498dffd41c69894465f848b2af3723dc7fdb9b530c2cd783b51e555864736f6c63430005110032",
+  "libraries": {
+    "Hasher": "0x11735d37F9f4833d6fC6C81634e24D5CE25AfE1D"
+  },
+  "devdoc": {
+    "methods": {
+      "deposit(bytes32)": {
+        "details": "Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.",
+        "params": {
+          "_commitment": "the note commitment, which is PedersenHash(nullifier + secret)"
+        }
+      },
+      "getLastRoot()": {
+        "details": "Returns the last root"
+      },
+      "hashLeftRight(bytes32,bytes32)": {
+        "details": "Hash 2 tree leaves, returns MiMC(_left, _right)"
+      },
+      "isKnownRoot(bytes32)": {
+        "details": "Whether the root is present in the root history"
+      },
+      "isSpent(bytes32)": {
+        "details": "whether a note is already spent "
+      },
+      "isSpentArray(bytes32[])": {
+        "details": "whether an array of notes is already spent "
+      },
+      "withdraw(bytes,bytes32,bytes32,address,address,uint256,uint256)": {
+        "details": "Withdraw a deposit from the contract. `proof` is a zkSNARK proof data, and input is an array of circuit public inputs `input` array consists of: - merkle root of all deposits in the contract - hash of unique deposit nullifier to prevent double spends - the recipient of funds - optional fee that goes to the transaction sender (usually a relay)"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 374,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "levels",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 377,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "filledSubtrees",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_array(t_bytes32)dyn_storage"
+      },
+      {
+        "astId": 380,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "zeros",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_bytes32)dyn_storage"
+      },
+      {
+        "astId": 383,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "currentRootIndex",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 386,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "nextIndex",
+        "offset": 4,
+        "slot": "3",
+        "type": "t_uint32"
+      },
+      {
+        "astId": 393,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "roots",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_array(t_bytes32)100_storage"
+      },
+      {
+        "astId": 3,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "_notEntered",
+        "offset": 0,
+        "slot": "104",
+        "type": "t_bool"
+      },
+      {
+        "astId": 765,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "denomination",
+        "offset": 0,
+        "slot": "105",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 769,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "nullifierHashes",
+        "offset": 0,
+        "slot": "106",
+        "type": "t_mapping(t_bytes32,t_bool)"
+      },
+      {
+        "astId": 773,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "commitments",
+        "offset": 0,
+        "slot": "107",
+        "type": "t_mapping(t_bytes32,t_bool)"
+      },
+      {
+        "astId": 775,
+        "contract": "contracts/ETHSherpa.sol:ETHSherpa",
+        "label": "verifier",
+        "offset": 0,
+        "slot": "108",
+        "type": "t_contract(IVerifier)759"
+      }
+    ],
+    "types": {
+      "t_array(t_bytes32)100_storage": {
+        "base": "t_bytes32",
+        "encoding": "inplace",
+        "label": "bytes32[100]",
+        "numberOfBytes": "3200"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(IVerifier)759": {
+        "encoding": "inplace",
+        "label": "contract IVerifier",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_bytes32,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  }
+}
